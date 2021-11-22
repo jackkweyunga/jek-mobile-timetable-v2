@@ -1,0 +1,20 @@
+import Swiper, { Navigation, Pagination } from 'swiper';
+import 'swiper/css/bundle';
+
+import tmbMain from './modules/tmb-main';
+import tmbCarousel from "./modules/tmb-carousel";
+
+
+class
+// htmls
+tmbMain.appendChild(tmbCarousel);
+
+
+// js
+
+const swiper = new Swiper(".swiper", {
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+})
