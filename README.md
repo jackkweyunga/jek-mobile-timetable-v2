@@ -67,12 +67,12 @@ For the simplest use, your htm file will look like this.
 #### Something like this will be visible
 
 
-![new timetable](https://user-images.githubusercontent.com/75433841/138961247-a5e6f541-1df3-4127-8b03-ae6c8af16851.png)
+![image](https://user-images.githubusercontent.com/75433841/142921416-0f6ec5e6-35f5-47a7-b058-8b8844cd5dc0.png)
 
 # ...
 
 #### Fun Fact
-This project is an evolution from myudsmtimetable project which unfortunately is dead :smile:
+This project is an evolution from jek-mobile-timetable-v1 https://github.com/jackkweyunga/jek-mobile-timetable-v1
 
 # Contribute
 Any new ideas plz reach out.
@@ -80,6 +80,8 @@ Any new ideas plz reach out.
 - If you want to be added as a developer in this project, reach out too.
 
 email [jackkweyunga@gmail.com](https://jackkweyunga@gmail.com)
+
+visit https://udsmtt.tk to find out more about the timetable
 
 # Liscence
 MIT
