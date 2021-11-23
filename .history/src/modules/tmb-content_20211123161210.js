@@ -117,7 +117,9 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
 
         if (data !== null | undefined) {
 
-            document.getElementById('selected-programme').innerText = data.name+` ${pyear}`;
+            content.innerHTML = "";
+
+            document.getElementById('selected-programme').innerText = data.name;
 
             var top_content = document.createElement('div');
             // swiper navigation
@@ -140,7 +142,7 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             main_content_right.appendChild(timetracker)
 
             var main_content_left = document.createElement('div');
-            main_content_left.innerHTML = "";
+
             main_content_left.appendChild(tmbCarousel);
 
             make_styles(top_content, main_content, main_content_right, main_content_left);
@@ -162,7 +164,6 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             let k_ = 0;
             for (let c of for_color_codes) {
                 let show = { name: c, color: colors[k_] }
-
                 // find the longfor of the course
                 let longform = data.events.filter(x => x.group == c)[0].group_longform
                 course_taken_el += `
@@ -176,7 +177,7 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             }
             document.getElementById("courses-taken").innerHTML = course_taken_el;
 
-            main_content_left.getElementsByClassName("swiper-wrapper")[0].innerHTML = "";
+
 
             for (let i = 0; i < ndays; i++) {
                 let day = day_column()
@@ -337,7 +338,7 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             }
 
 
-            // 
+            //
             main_content.appendChild(main_content_left)
             main_content.appendChild(main_content_right)
 

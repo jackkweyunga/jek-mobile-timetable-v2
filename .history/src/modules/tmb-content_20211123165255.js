@@ -140,7 +140,7 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             main_content_right.appendChild(timetracker)
 
             var main_content_left = document.createElement('div');
-            main_content_left.innerHTML = "";
+            
             main_content_left.appendChild(tmbCarousel);
 
             make_styles(top_content, main_content, main_content_right, main_content_left);
@@ -176,7 +176,7 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             }
             document.getElementById("courses-taken").innerHTML = course_taken_el;
 
-            main_content_left.getElementsByClassName("swiper-wrapper")[0].innerHTML = "";
+
 
             for (let i = 0; i < ndays; i++) {
                 let day = day_column()
@@ -337,7 +337,7 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             }
 
 
-            // 
+            //
             main_content.appendChild(main_content_left)
             main_content.appendChild(main_content_right)
 

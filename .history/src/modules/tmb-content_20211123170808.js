@@ -176,7 +176,7 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             }
             document.getElementById("courses-taken").innerHTML = course_taken_el;
 
-            main_content_left.getElementsByClassName("swiper-wrapper")[0].innerHTML = "";
+            main_content_left.getElementsByClassName("swiper-wrapper")[0].innerHTML
 
             for (let i = 0; i < ndays; i++) {
                 let day = day_column()
