@@ -1,0 +1,108 @@
+<div class="d-flex flex-column p-2">
+  <small>Project Description.</small>
+  <hr />
+
+  <p class="myFont">
+    <center>
+      <small
+        >UDSMTT is mantained by <br />
+        Jack Kweyunga.</small
+      >
+    </center>
+  </p>
+  <div class="d-flex justify-content-center">
+    <a href="https://tz.linkedin.com/in/jack-k-b7354017a?trk=profile-badge/">
+      <img
+        align="left"
+        alt="jack's LinkedIN"
+        width="32px"
+        src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/linkedin.svg"
+      />
+    </a>
+
+    <a class="px-5" href="https://twitter.com/jackkweyunga">
+      <img
+        align="left"
+        alt="jack's twitter"
+        width="32px"
+        src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/twitter.svg"
+      />
+    </a>
+
+    <a href="https://github.com/jackkweyunga">
+      <img
+        align="left"
+        alt="jack's github"
+        width="32px"
+        class="bg-white p-0"
+        style="border-radius: 100px"
+        src="https://raw.githubusercontent.com/peterthehan/peterthehan/master/assets/github.svg"
+      />
+    </a>
+  </div>
+
+  <hr />
+
+  <p class="myFont">
+    <small>
+      Jack Kweyunga accepts any support you can give to ensure the continuity of
+      the project.
+    </small>
+  </p>
+</div>
+
+<div id="smart-button-container" class="d-flex flex-co">
+  <div class="d-flex flex-column">
+    <label for="description"> Full Name </label
+    ><input
+      type="text"
+      name="descriptionInput"
+      id="description"
+      maxlength="127"
+      value=""
+    />
+  </div>
+  <p
+    id="descriptionError"
+    style="visibility: hidden; color: red; text-align: center"
+  >
+    Please enter a description
+  </p>
+  <div style="text-align: center">
+    <label for="amount"> Amount </label
+    ><input
+      name="amountInput"
+      type="number"
+      class="form-group"
+      id="amount"
+      value=""
+    /><span> USD </span>
+  </div>
+  <p
+    id="priceLabelError"
+    style="visibility: hidden; color: red; text-align: center"
+  >
+    Please enter a price
+  </p>
+  <div id="invoiceidDiv" style="text-align: center; display: none">
+    <label for="invoiceid"> </label
+    ><input
+      name="invoiceid"
+      class="form-group"
+      maxlength="127"
+      type="text"
+      id="invoiceid"
+      value=""
+    />
+  </div>
+  <p
+    id="invoiceidError"
+    style="visibility: hidden; color: red; text-align: center"
+  >
+    Please enter an Invoice ID
+  </p>
+  <div
+    style="text-align: center; margin-top: 0.625rem"
+    id="paypal-button-container"
+  ></div>
+</div>

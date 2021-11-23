@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- bootstrap icons  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+
+    <div id="tmb"></div>
+
+    <!-- paypal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD"
+        data-sdk-integration-source="button-factory"></script>
+
+
+    <!-- tmb.js -->
+    <script src="dist/jek-mobile-tmb.js"></script>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+    <script>
+        function initPayPalButton() {
+            var description = document.querySelector('#smart-button-container #description');
+            var amount = document.querySelector('#smart-button-container #amount');
+            var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+            var priceError = document.querySelector('#smart-button-container #priceLabelError');
+            var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+            var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+            var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+
+            var elArr = [description, amount];
+
+            if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+                invoiceidDiv.style.display = "block";
+            }
+
+            var purchase_units = [];
+            purchase_units[0] = {};
+            purchase_units[0].amount = {};
+
+            function validate(event) {
+                return event.value.length > 0;
+            }
+
+            paypal.Buttons({
+                style: {
+                    color: 'blue',
+                    shape: 'pill',
+                    label: 'paypal',
+                    layout: 'vertical',
+
+                },
+
+                onInit: function (data, actions) {
+                    actions.disable();
+
+                    if (invoiceidDiv.style.display === "block") {
+                        elArr.push(invoiceid);
+                    }
+
+                    elArr.forEach(function (item) {
+                        item.addEventListener('keyup', function (event) {
+                            var result = elArr.every(validate);
+                            if (result) {
+                                actions.enable();
+                            } else {
+                                actions.disable();
+                            }
+                        });
+                    });
+                },
+
+                onClick: function () {
+                    if (description.value.length < 1) {
+                        descriptionError.style.visibility = "visible";
+                    } else {
+                        descriptionError.style.visibility = "hidden";
+                    }
+
+                    if (amount.value.length < 1) {
+                        priceError.style.visibility = "visible";
+                    } else {
+                        priceError.style.visibility = "hidden";
+                    }
+
+                    if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+                        invoiceidError.style.visibility = "visible";
+                    } else {
+                        invoiceidError.style.visibility = "hidden";
+                    }
+
+                    purchase_units[0].description = description.value;
+                    purchase_units[0].amount.value = amount.value;
+
+                    if (invoiceid.value !== '') {
+                        purchase_units[0].invoice_id = invoiceid.value;
+                    }
+                },
+
+                createOrder: function (data, actions) {
+                    return actions.order.create({
+                        purchase_units: purchase_units,
+                    });
+                },
+
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (orderData) {
+
+                        // Full available details
+                        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                        // Show a success message within this page, e.g.
+                        const element = document.getElementById('paypal-button-container');
+                        element.innerHTML = '';
+                        element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                        // Or go to another URL:  actions.redirect('thank_you.html');
+
+                    });
+                },
+
+                onError: function (err) {
+                    console.log(err);
+                }
+            }).render('#paypal-button-container');
+        }
+        initPayPalButton();
+
+        sideNav.innerHTML = ""
+    </script>
+</body>
+
+</html>
