@@ -117,21 +117,10 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
 
         if (data !== null | undefined) {
 
-            document.getElementById('selected-programme').innerHTML = ` 
-                <p>${data.name} ${pyear}
-                <br>
-                </p>
-                A link to this specific timetable:
-                <a id="this-link" href='${window.location.href}?id=${pid}&tag=${pyear.replace(" ", "-")}' >
-                ${window.location.href}?id=${pid}&tag=${pyear.replace(" ", "-")}
-                </a><button class="btn btn-sm btn-primary" id='copy-link'>copy</button>
+            document.getElementById('selected-programme').innerText = `
+                ${pid}. ` + data.name+` ${pyear}
+                br
                 `;
-            document.getElementById('copy-link').addEventListener('click', (ev)=>{
-                var link = document.getElementById('this-link').innerText
-                navigator.clipboard.writeText(link);
-                alert('The link was copied successfuly.');
-            })
-            
 
             var top_content = document.createElement('div');
             // swiper navigation

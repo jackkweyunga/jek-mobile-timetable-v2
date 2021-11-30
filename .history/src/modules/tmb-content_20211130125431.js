@@ -129,7 +129,7 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
             document.getElementById('copy-link').addEventListener('click', (ev)=>{
                 var link = document.getElementById('this-link').innerText
                 navigator.clipboard.writeText(link);
-                alert('The link was copied successfuly.');
+                aler
             })
             
 

@@ -125,11 +125,11 @@ export const drawTimeTable = async (pid, pyear, ndays = 5) => {
                 <a id="this-link" href='${window.location.href}?id=${pid}&tag=${pyear.replace(" ", "-")}' >
                 ${window.location.href}?id=${pid}&tag=${pyear.replace(" ", "-")}
                 </a><button class="btn btn-sm btn-primary" id='copy-link'>copy</button>
+
                 `;
             document.getElementById('copy-link').addEventListener('click', (ev)=>{
                 var link = document.getElementById('this-link').innerText
                 navigator.clipboard.writeText(link);
-                alert('The link was copied successfuly.');
             })
             
 

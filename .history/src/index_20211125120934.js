@@ -1,3 +1,4 @@
+import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/css/bundle';
 
 import { default as content, drawTimeTable } from "./modules/tmb-content";
@@ -45,7 +46,7 @@ const SelectionListener = (pid, pyear) => {
   });
 };
 
-const filterListener = (_d) => {
+const filterListener = (_d, _t) => {
   startLoading();
   var from_local = window.localStorage.getItem('selected-programme');
   // console.log(from_local);
